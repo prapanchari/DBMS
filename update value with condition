@@ -1,0 +1,4 @@
+ update staff
+  set salary=30000
+  where staff_id='stf013'
+  ;
