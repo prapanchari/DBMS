@@ -1,0 +1,1 @@
+select mod(salary,10)from staff;
