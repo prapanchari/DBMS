@@ -1,0 +1,4 @@
+INSERT INTO Branch
+    (branch_id, branch_name, state, city, pincode, email_id)
+    VALUES
+   ('BR001','SrisaiXerox','Tamil Nadu','Chennai','600017','srisai12@gmail.com');
