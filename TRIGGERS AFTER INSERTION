@@ -1,0 +1,8 @@
+CREATE OR REPLACE TRIGGER before_insert_staff
+    BEFORE INSERT ON STAFF
+    FOR EACH ROW
+    BEGIN
+    IF :NEW.SALARY < 10000 THEN
+    RAISE_APPLICATION_ERROR(-20001,'Salary must be at least 10000');
+    END IF;
+    END;
