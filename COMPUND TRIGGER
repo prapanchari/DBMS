@@ -1,0 +1,30 @@
+CREATE OR REPLACE TRIGGER compound_trigger_inventory
+      FOR INSERT OR DELETE ON INVENTORY
+     COMPOUND TRIGGER
+  
+        BEFORE STATEMENT IS
+        BEGIN
+           DBMS_OUTPUT.PUT_LINE('Inventory operation started');
+        END BEFORE STATEMENT;
+  
+     BEFORE EACH ROW IS
+     BEGIN
+         IF INSERTING THEN
+            DBMS_OUTPUT.PUT_LINE('Inserting item: ' || :NEW.INVENTORY_ID);
+         END IF;
+     END BEFORE EACH ROW;
+ 
+      AFTER EACH ROW IS
+     BEGIN
+        IF DELETING THEN
+            DBMS_OUTPUT.PUT_LINE('Deleted item: ' || :OLD.INVENTORY_ID);
+         END IF;
+      END AFTER EACH ROW;
+ 
+      AFTER STATEMENT IS
+      BEGIN
+         DBMS_OUTPUT.PUT_LINE('Inventory operation completed');
+      END AFTER STATEMENT;
+ 
+      END compound_trigger_inventory;
+      /
